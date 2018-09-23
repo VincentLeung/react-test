@@ -1,0 +1,15 @@
+{
+  "App": {
+    "Masthead": {
+      "siteName": "Company 1"
+    }
+  },
+  "Country": {
+    "en-US": "English (US)",
+    "en-HK": "English (HK)",
+    "zh-HK": "香港正體字",
+    "am": "Armenia",
+    "be": "Belgium",
+    "ai": "Anguilla"
+  }
+}

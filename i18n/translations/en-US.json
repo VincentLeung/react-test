@@ -1,0 +1,40 @@
+{
+  "To get started, edit <1>src/App.js</1> and save to reload.":
+    "To get started, edit <1>src/App.js</1> and save to reload.",
+  "Username": "User name",
+  "Login": "Login",
+  "Logout": "Logout",
+  "Password": "Password",
+  "OTP": "One Time Password",
+  "Forget Password": "Forget Password",
+  "Loading users...": "Loading users...",
+  "You are logged in with React & JWT!!": "You are logged in with React & JWT!!",
+  "Users from secure api end point": "Users from secure api end point:",
+  "Greeting user": "Hello {{firstName}} {{lastName}}",
+  "App": {
+    "Masthead": {
+      "businessService1": "Business Service 1",
+      "businessService2": "Business Service 2",
+      "login": "Login",
+      "logout": "Logout",
+      "Company Greetings": "Welcome to Company 1",
+      "Company Summary": "Company 1 Summary"
+    }
+  },
+  "Country": {
+    "Choose your country or region": "Choose your country or region.",
+    "Africa, Middle East, and India": "Africa, Middle East, and India",
+    "Asia Pacific": "Asia Pacific",
+    "Europe": "Europe",
+    "Latin America and the Caribbean": "Latin America and the Caribbean",
+    "The United States, Canada, and Puerto Rico": "The United States, Canada, and Puerto Rico"
+  },
+  "businessservice1": {
+    "page1": "Page 1",
+    "page2": "Page 2",
+    "page3": "Page 3"
+  },
+  "errorMessage": {
+    "ACCESS_DENIED": "Logon failed"
+  }
+}

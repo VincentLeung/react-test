@@ -1,0 +1,24 @@
+{
+  "presets": [
+    "env",
+    "react",
+    "stage-3"
+  ],
+  "plugins": [
+    ["module-resolver", {
+      "root": ["./src"],
+      "alias": {
+        "test": "./test",
+        "underscore": "lodash",
+        "helpers": "./src/helpers",
+        "src": "./src"
+      }
+    }],
+    ["transform-runtime", {
+      "helpers": false,
+      "polyfill": false,
+      "regenerator": true,
+      "moduleName": "babel-runtime"
+    }]
+  ]
+}

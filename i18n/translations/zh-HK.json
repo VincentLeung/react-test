@@ -1,0 +1,40 @@
+{
+  "To get started, edit <1>src/App.js</1> and save to reload.":
+    "要開始，請編輯<1>src/App.js</1> 並保存以重新加載。",
+  "Username": "用戶名",
+  "Login": "登錄",
+  "Logout": "登出",
+  "Password": "密碼",
+  "OTP": "One Time Password",
+  "Forget Password": "忘記密碼",
+  "Loading users...": "加載用戶...",
+  "You are logged in with React & JWT!!": "您已使用React＆JWT登錄!!",
+  "Users from secure api end point": "來自安全api端點的用戶：",
+  "Greeting user": "你好, {{firstName}} {{lastName}}",
+  "App": {
+    "Masthead": {
+      "businessService1": "Business Service 1",
+      "businessService2": "Business Service 2",
+      "login": "登錄",
+      "logout": "登出",
+      "Company Greetings": "Welcome to Company 1",
+      "Company Summary": "Company 1 Summary"
+    }
+  },
+  "Country": {
+    "Choose your country or region": "選擇您所在的國家或地區。",
+    "Africa, Middle East, and India": "非洲，中東和印度",
+    "Asia Pacific": "亞太地區",
+    "Europe": "歐洲",
+    "Latin America and the Caribbean": "拉丁美洲和加勒比地區",
+    "The United States, Canada, and Puerto Rico": "美國，加拿大和波多黎各"
+  },
+  "businessservice1": {
+    "page1": "頁 1",
+    "page2": "頁 2",
+    "page3": "頁 3"
+  },
+  "errorMessage": {
+    "ACCESS_DENIED": "登錄失敗"
+  }
+}

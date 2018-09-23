@@ -1,0 +1,33 @@
+{
+    "authorities": [
+        {
+            "authority": "ROLE_ADMIN"
+        },
+        {
+            "authority": "ROLE_COIN_WITHDRAWAL_REQUESTER"
+        }
+    ],
+    "details": null,
+    "authenticated": true,
+    "principal": "329532fa-3f2e-4dc7-bfcf-2f785fdc698d",
+    "credentials": null,
+    "parsedCredentialDto": {
+        "id": 0,
+        "version": 0,
+        "username": "test1@aaa.com",
+        "uuid": "329532fa-3f2e-4dc7-bfcf-2f785fdc698d",
+        "password": null,
+        "passwordAlgorithm": null,
+        "saltType": null,
+        "siteGroup": "OPS_GROUP",
+        "dateCreated": null,
+        "lastUpdated": null
+    },
+    "loggedInWithTwoFactor": true,
+    "grantedRoleList": [
+        "ROLE_ADMIN",
+        "ROLE_COIN_WITHDRAWAL_REQUESTER"
+    ],
+    "uuid": "329532fa-3f2e-4dc7-bfcf-2f785fdc698d",
+    "name": "329532fa-3f2e-4dc7-bfcf-2f785fdc698d"
+}
