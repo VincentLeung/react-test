@@ -5,7 +5,6 @@
   "Login": "登錄",
   "Logout": "登出",
   "Password": "密碼",
-  "OTP": "One Time Password",
   "Forget Password": "忘記密碼",
   "Loading users...": "加載用戶...",
   "You are logged in with React & JWT!!": "您已使用React＆JWT登錄!!",

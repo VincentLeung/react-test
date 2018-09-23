@@ -18,7 +18,6 @@ class LoginPage extends React.Component {
         this.state = {
             username: '',
             password: '',
-            otp: '',
             submitted: false
         };
 
@@ -35,16 +34,16 @@ class LoginPage extends React.Component {
         e.preventDefault();
 
         this.setState({ submitted: true });
-        const { username, password, otp } = this.state;
+        const { username, password } = this.state;
         const { dispatch } = this.props;
         if (username && password) {
-            dispatch(authenticationActions.login({username, password, otp}));
+            dispatch(authenticationActions.login({username, password }));
         }
     }
 
     render() {
         const { t, loggingIn } = this.props;
-        const { username, password, otp, submitted } = this.state;
+        const { username, password, submitted } = this.state;
         return (
           <Grid textAlign='center' verticalAlign='middle'>
             <Grid.Column style={{ maxWidth: 450 }}>
@@ -55,7 +54,6 @@ class LoginPage extends React.Component {
               <Form name='form' onSubmit={this.handleSubmit}>
                 <Form.Input icon='user' iconPosition='left' label={t('Username')} placeholder={t('Username')} type='text' name='username' value={username} required onChange={this.handleChange} />
                 <Form.Input icon='lock' iconPosition='left' label={t('Password')} placeholder={t('Password')} type='password' name='password' value={password} required onChange={this.handleChange} />
-                <Form.Input icon='lock' iconPosition='left' label={t('OTP')} placeholder={t('OTP')} type='text' name='otp' value={otp} required onChange={this.handleChange} />
                 <Form.Button fluid color='teal' content={t('Login')} />
               </Form>
               </Segment>

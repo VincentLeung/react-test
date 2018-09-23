@@ -8,7 +8,7 @@ import * as types from './types';
 
 function* login(login) {
   try {
-    const user = yield call(authService.login, login.user.username, login.user.password, login.user.otp);
+    const user = yield call(authService.login, login.user.username, login.user.password);
     yield put(authenticationActions.loginSuccess(user));
     yield put(authenticationActions.currentUser());
     history.replace('/home');

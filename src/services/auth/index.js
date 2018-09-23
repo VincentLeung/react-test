@@ -7,12 +7,11 @@ export const authService = {
     currentUser
 };
 
-function login(username, password, otp) {
-    const otpType = 'TIME_BASED_OTP';
+function login(username, password) {
     const requestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ username, password, otpType, otp })
+        body: JSON.stringify({ username, password })
     };
     return fetch(`${config.apiUrl}/auth/login`, requestOptions)
         .then(handleResponse)

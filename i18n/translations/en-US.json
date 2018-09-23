@@ -5,7 +5,6 @@
   "Login": "Login",
   "Logout": "Logout",
   "Password": "Password",
-  "OTP": "One Time Password",
   "Forget Password": "Forget Password",
   "Loading users...": "Loading users...",
   "You are logged in with React & JWT!!": "You are logged in with React & JWT!!",

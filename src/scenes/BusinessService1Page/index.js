@@ -25,7 +25,7 @@ class BusinessService1Page extends React.Component {
           { name: "businessservice1.page3", to: '/businessservice1/page3', comp: Page3, privateRoute: true }
          ];
         
-         const items = data.map((d, i) => ({
+        const items = data.map((d, i) => ({
           key: i,
           content: <Link to={d.to}>{t(d.name)}</Link>
         }));
