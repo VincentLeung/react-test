@@ -27,7 +27,7 @@ export const Block = ({data}) => (
         <Use xlinkHref={lineStyle(data.line3)} x={ blockDim.margin.left } y={ lineHeight * 0 + blockDim.margin.top } />
         <Use xlinkHref={lineStyle(data.line2)} x={ blockDim.margin.left } y={ lineHeight * 2 + blockDim.margin.top } />
         <Use xlinkHref={lineStyle(data.line1)} x={ blockDim.margin.left } y={ lineHeight * 4 + blockDim.margin.top } />
-        <Text x={ blockDim.margin.left + textDim.x } y={ lineHeight * 4 + textDim.height + blockDim.margin.top }>{blockName(data)}</Text>
+        <Text x={ blockDim.margin.left + textDim.x } y={ lineHeight * 4 + textDim.height + blockDim.margin.top } style={ textStyle }>{blockName(data)}</Text>
     </SVG>
 )
 
@@ -40,7 +40,7 @@ export const Unit = ({data}) => (
         <Use xlinkHref={lineStyle(data.line3)} x={ unitDim.margin.left } y={ lineHeight * 6 + unitDim.margin.top } />
         <Use xlinkHref={lineStyle(data.line2)} x={ unitDim.margin.left } y={ lineHeight * 8 + unitDim.margin.top } />
         <Use xlinkHref={lineStyle(data.line1)} x={ unitDim.margin.left } y={ lineHeight * 10 + unitDim.margin.top } />
-        <Text x={ unitDim.margin.left + textDim.x } y={ lineHeight * 10 + textDim.height + unitDim.margin.top }>{unitName(data)}</Text>
+        <Text x={ unitDim.margin.left + textDim.x } y={ lineHeight * 10 + textDim.height + unitDim.margin.top } style={ textStyle }>{unitName(data)}</Text>
     </SVG>
 )
 
@@ -54,11 +54,14 @@ const dottedLineStyle = {
     fill: '#0000ee',
 }
 
+const textStyle = {
+}
+
 const lineStyle = ( data ) => (
     data ? '#solidLine' : '#dottedLine'
 )
 
-function blockName(data) {
+const blockName = (data) => {
     var name = 'octagon.b';
     name += data.line1 ? '1' : '0';
     name += data.line2 ? '1' : '0';
@@ -66,7 +69,7 @@ function blockName(data) {
     return data.t(name);
 }
 
-function unitName(data) {
+const unitName = (data) => {
     var name = 'octagon.u';
     name += data.line1 ? '1' : '0';
     name += data.line2 ? '1' : '0';
