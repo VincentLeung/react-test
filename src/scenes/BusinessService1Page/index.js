@@ -5,7 +5,7 @@ import { Link, Router, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { translate, Trans } from 'react-i18next';
 import { flowRight } from 'lodash';
-import { Button, Container, Header, Item, List, Message, Step } from 'semantic-ui-react';
+import { Button, Container, Header, Item, List, Message, Step, Table } from 'semantic-ui-react';
 
 import { history } from 'helpers';
 import { RouteMap } from 'routers';
@@ -36,96 +36,113 @@ class BusinessService1Page extends React.Component {
             <Message color='green'>
                 This is the Business Service 1 page
             </Message>
-            <Block data = { { t, line1: 1, line2: 1, line3: 1 } } />
-            <Block data = { { t, line1: 1, line2: 1, line3: 1 } } />
-            <Block data = { { t, line1: 1, line2: 1, line3: 0 } } />
-            <Block data = { { t, line1: 1, line2: 0, line3: 1 } } />
-            <Block data = { { t, line1: 1, line2: 0, line3: 0 } } />
-            <Block data = { { t, line1: 0, line2: 1, line3: 1 } } />
-            <Block data = { { t, line1: 0, line2: 1, line3: 0 } } />
-            <Block data = { { t, line1: 0, line2: 0, line3: 1 } } />
-            <Block data = { { t, line1: 0, line2: 0, line3: 0 } } />
-            <br/>
-            <Block data = { { t, line1: 1, line2: 1, line3: 1 } } />
-            <Unit data = { { t, line1: 1, line2: 1, line3: 1, line4: 1, line5: 1, line6: 1 } } />
-            <Unit data = { { t, line1: 1, line2: 1, line3: 1, line4: 1, line5: 1, line6: 0 } } />
-            <Unit data = { { t, line1: 1, line2: 1, line3: 1, line4: 1, line5: 0, line6: 1 } } />
-            <Unit data = { { t, line1: 1, line2: 1, line3: 1, line4: 1, line5: 0, line6: 0 } } />
-            <Unit data = { { t, line1: 1, line2: 1, line3: 1, line4: 0, line5: 1, line6: 1 } } />
-            <Unit data = { { t, line1: 1, line2: 1, line3: 1, line4: 0, line5: 1, line6: 0 } } />
-            <Unit data = { { t, line1: 1, line2: 1, line3: 1, line4: 0, line5: 0, line6: 1 } } />
-            <Unit data = { { t, line1: 1, line2: 1, line3: 1, line4: 0, line5: 0, line6: 0 } } />
-            <br/>
-            <Block data = { { t, line1: 1, line2: 1, line3: 0 } } />
-            <Unit data = { { t, line1: 1, line2: 1, line3: 0, line4: 1, line5: 1, line6: 1 } } />
-            <Unit data = { { t, line1: 1, line2: 1, line3: 0, line4: 1, line5: 1, line6: 0 } } />
-            <Unit data = { { t, line1: 1, line2: 1, line3: 0, line4: 1, line5: 0, line6: 1 } } />
-            <Unit data = { { t, line1: 1, line2: 1, line3: 0, line4: 1, line5: 0, line6: 0 } } />
-            <Unit data = { { t, line1: 1, line2: 1, line3: 0, line4: 0, line5: 1, line6: 1 } } />
-            <Unit data = { { t, line1: 1, line2: 1, line3: 0, line4: 0, line5: 1, line6: 0 } } />
-            <Unit data = { { t, line1: 1, line2: 1, line3: 0, line4: 0, line5: 0, line6: 1 } } />
-            <Unit data = { { t, line1: 1, line2: 1, line3: 0, line4: 0, line5: 0, line6: 0 } } />
-            <br/>
-            <Block data = { { t, line1: 1, line2: 0, line3: 1 } } />
-            <Unit data = { { t, line1: 1, line2: 0, line3: 1, line4: 1, line5: 1, line6: 1 } } />
-            <Unit data = { { t, line1: 1, line2: 0, line3: 1, line4: 1, line5: 1, line6: 0 } } />
-            <Unit data = { { t, line1: 1, line2: 0, line3: 1, line4: 1, line5: 0, line6: 1 } } />
-            <Unit data = { { t, line1: 1, line2: 0, line3: 1, line4: 1, line5: 0, line6: 0 } } />
-            <Unit data = { { t, line1: 1, line2: 0, line3: 1, line4: 0, line5: 1, line6: 1 } } />
-            <Unit data = { { t, line1: 1, line2: 0, line3: 1, line4: 0, line5: 1, line6: 0 } } />
-            <Unit data = { { t, line1: 1, line2: 0, line3: 1, line4: 0, line5: 0, line6: 1 } } />
-            <Unit data = { { t, line1: 1, line2: 0, line3: 1, line4: 0, line5: 0, line6: 0 } } />
-            <br/>
-            <Block data = { { t, line1: 1, line2: 0, line3: 0 } } />
-            <Unit data = { { t, line1: 1, line2: 0, line3: 0, line4: 1, line5: 1, line6: 1 } } />
-            <Unit data = { { t, line1: 1, line2: 0, line3: 0, line4: 1, line5: 1, line6: 0 } } />
-            <Unit data = { { t, line1: 1, line2: 0, line3: 0, line4: 1, line5: 0, line6: 1 } } />
-            <Unit data = { { t, line1: 1, line2: 0, line3: 0, line4: 1, line5: 0, line6: 0 } } />
-            <Unit data = { { t, line1: 1, line2: 0, line3: 0, line4: 0, line5: 1, line6: 1 } } />
-            <Unit data = { { t, line1: 1, line2: 0, line3: 0, line4: 0, line5: 1, line6: 0 } } />
-            <Unit data = { { t, line1: 1, line2: 0, line3: 0, line4: 0, line5: 0, line6: 1 } } />
-            <Unit data = { { t, line1: 1, line2: 0, line3: 0, line4: 0, line5: 0, line6: 0 } } />
-            <br/>
-            <Block data = { { t, line1: 0, line2: 1, line3: 1 } } />
-            <Unit data = { { t, line1: 0, line2: 1, line3: 1, line4: 1, line5: 1, line6: 1 } } />
-            <Unit data = { { t, line1: 0, line2: 1, line3: 1, line4: 1, line5: 1, line6: 0 } } />
-            <Unit data = { { t, line1: 0, line2: 1, line3: 1, line4: 1, line5: 0, line6: 1 } } />
-            <Unit data = { { t, line1: 0, line2: 1, line3: 1, line4: 1, line5: 0, line6: 0 } } />
-            <Unit data = { { t, line1: 0, line2: 1, line3: 1, line4: 0, line5: 1, line6: 1 } } />
-            <Unit data = { { t, line1: 0, line2: 1, line3: 1, line4: 0, line5: 1, line6: 0 } } />
-            <Unit data = { { t, line1: 0, line2: 1, line3: 1, line4: 0, line5: 0, line6: 1 } } />
-            <Unit data = { { t, line1: 0, line2: 1, line3: 1, line4: 0, line5: 0, line6: 0 } } />
-            <br/>
-            <Block data = { { t, line1: 0, line2: 1, line3: 0 } } />
-            <Unit data = { { t, line1: 0, line2: 1, line3: 0, line4: 1, line5: 1, line6: 1 } } />
-            <Unit data = { { t, line1: 0, line2: 1, line3: 0, line4: 1, line5: 1, line6: 0 } } />
-            <Unit data = { { t, line1: 0, line2: 1, line3: 0, line4: 1, line5: 0, line6: 1 } } />
-            <Unit data = { { t, line1: 0, line2: 1, line3: 0, line4: 1, line5: 0, line6: 0 } } />
-            <Unit data = { { t, line1: 0, line2: 1, line3: 0, line4: 0, line5: 1, line6: 1 } } />
-            <Unit data = { { t, line1: 0, line2: 1, line3: 0, line4: 0, line5: 1, line6: 0 } } />
-            <Unit data = { { t, line1: 0, line2: 1, line3: 0, line4: 0, line5: 0, line6: 1 } } />
-            <Unit data = { { t, line1: 0, line2: 1, line3: 0, line4: 0, line5: 0, line6: 0 } } />
-            <br/>
-            <Block data = { { t, line1: 0, line2: 0, line3: 1 } } />
-            <Unit data = { { t, line1: 0, line2: 0, line3: 1, line4: 1, line5: 1, line6: 1 } } />
-            <Unit data = { { t, line1: 0, line2: 0, line3: 1, line4: 1, line5: 1, line6: 0 } } />
-            <Unit data = { { t, line1: 0, line2: 0, line3: 1, line4: 1, line5: 0, line6: 1 } } />
-            <Unit data = { { t, line1: 0, line2: 0, line3: 1, line4: 1, line5: 0, line6: 0 } } />
-            <Unit data = { { t, line1: 0, line2: 0, line3: 1, line4: 0, line5: 1, line6: 1 } } />
-            <Unit data = { { t, line1: 0, line2: 0, line3: 1, line4: 0, line5: 1, line6: 0 } } />
-            <Unit data = { { t, line1: 0, line2: 0, line3: 1, line4: 0, line5: 0, line6: 1 } } />
-            <Unit data = { { t, line1: 0, line2: 0, line3: 1, line4: 0, line5: 0, line6: 0 } } />
-            <br/>
-            <Block data = { { t, line1: 0, line2: 0, line3: 0 } } />
-            <Unit data = { { t, line1: 0, line2: 0, line3: 0, line4: 1, line5: 1, line6: 1 } } />
-            <Unit data = { { t, line1: 0, line2: 0, line3: 0, line4: 1, line5: 1, line6: 0 } } />
-            <Unit data = { { t, line1: 0, line2: 0, line3: 0, line4: 1, line5: 0, line6: 1 } } />
-            <Unit data = { { t, line1: 0, line2: 0, line3: 0, line4: 1, line5: 0, line6: 0 } } />
-            <Unit data = { { t, line1: 0, line2: 0, line3: 0, line4: 0, line5: 1, line6: 1 } } />
-            <Unit data = { { t, line1: 0, line2: 0, line3: 0, line4: 0, line5: 1, line6: 0 } } />
-            <Unit data = { { t, line1: 0, line2: 0, line3: 0, line4: 0, line5: 0, line6: 1 } } />
-            <Unit data = { { t, line1: 0, line2: 0, line3: 0, line4: 0, line5: 0, line6: 0 } } />
-            <br/>
+
+            <Table definition>
+                <Table.Header>
+                    <Table.Row>
+                        <Table.HeaderCell />
+                        <Table.HeaderCell><Block data = { { t, line1: 1, line2: 1, line3: 1 } } /></Table.HeaderCell>
+                        <Table.HeaderCell><Block data = { { t, line1: 1, line2: 1, line3: 0 } } /></Table.HeaderCell>
+                        <Table.HeaderCell><Block data = { { t, line1: 1, line2: 0, line3: 1 } } /></Table.HeaderCell>
+                        <Table.HeaderCell><Block data = { { t, line1: 1, line2: 0, line3: 0 } } /></Table.HeaderCell>
+                        <Table.HeaderCell><Block data = { { t, line1: 0, line2: 1, line3: 1 } } /></Table.HeaderCell>
+                        <Table.HeaderCell><Block data = { { t, line1: 0, line2: 1, line3: 0 } } /></Table.HeaderCell>
+                        <Table.HeaderCell><Block data = { { t, line1: 0, line2: 0, line3: 1 } } /></Table.HeaderCell>
+                        <Table.HeaderCell><Block data = { { t, line1: 0, line2: 0, line3: 0 } } /></Table.HeaderCell>
+                    </Table.Row>
+                </Table.Header>
+                <Table.Body>
+                <Table.Row>
+                    <Table.Cell><Block data = { { t, line1: 1, line2: 1, line3: 1 } } /></Table.Cell>
+                    <Table.Cell><Unit data = { { t, line1: 1, line2: 1, line3: 1, line4: 1, line5: 1, line6: 1 } } /></Table.Cell>
+                    <Table.Cell><Unit data = { { t, line1: 1, line2: 1, line3: 1, line4: 1, line5: 1, line6: 0 } } /></Table.Cell>
+                    <Table.Cell><Unit data = { { t, line1: 1, line2: 1, line3: 1, line4: 1, line5: 0, line6: 1 } } /></Table.Cell>
+                    <Table.Cell><Unit data = { { t, line1: 1, line2: 1, line3: 1, line4: 1, line5: 0, line6: 0 } } /></Table.Cell>
+                    <Table.Cell><Unit data = { { t, line1: 1, line2: 1, line3: 1, line4: 0, line5: 1, line6: 1 } } /></Table.Cell>
+                    <Table.Cell><Unit data = { { t, line1: 1, line2: 1, line3: 1, line4: 0, line5: 1, line6: 0 } } /></Table.Cell>
+                    <Table.Cell><Unit data = { { t, line1: 1, line2: 1, line3: 1, line4: 0, line5: 0, line6: 1 } } /></Table.Cell>
+                    <Table.Cell><Unit data = { { t, line1: 1, line2: 1, line3: 1, line4: 0, line5: 0, line6: 0 } } /></Table.Cell>
+                </Table.Row>
+                <Table.Row>
+                    <Table.Cell><Block data = { { t, line1: 1, line2: 1, line3: 0 } } /></Table.Cell>
+                    <Table.Cell><Unit data = { { t, line1: 1, line2: 1, line3: 0, line4: 1, line5: 1, line6: 1 } } /></Table.Cell>
+                    <Table.Cell><Unit data = { { t, line1: 1, line2: 1, line3: 0, line4: 1, line5: 1, line6: 0 } } /></Table.Cell>
+                    <Table.Cell><Unit data = { { t, line1: 1, line2: 1, line3: 0, line4: 1, line5: 0, line6: 1 } } /></Table.Cell>
+                    <Table.Cell><Unit data = { { t, line1: 1, line2: 1, line3: 0, line4: 1, line5: 0, line6: 0 } } /></Table.Cell>
+                    <Table.Cell><Unit data = { { t, line1: 1, line2: 1, line3: 0, line4: 0, line5: 1, line6: 1 } } /></Table.Cell>
+                    <Table.Cell><Unit data = { { t, line1: 1, line2: 1, line3: 0, line4: 0, line5: 1, line6: 0 } } /></Table.Cell>
+                    <Table.Cell><Unit data = { { t, line1: 1, line2: 1, line3: 0, line4: 0, line5: 0, line6: 1 } } /></Table.Cell>
+                    <Table.Cell><Unit data = { { t, line1: 1, line2: 1, line3: 0, line4: 0, line5: 0, line6: 0 } } /></Table.Cell>
+                </Table.Row>
+                <Table.Row>
+                    <Table.Cell><Block data = { { t, line1: 1, line2: 0, line3: 1 } } /></Table.Cell>
+                    <Table.Cell><Unit data = { { t, line1: 1, line2: 0, line3: 1, line4: 1, line5: 1, line6: 1 } } /></Table.Cell>
+                    <Table.Cell><Unit data = { { t, line1: 1, line2: 0, line3: 1, line4: 1, line5: 1, line6: 0 } } /></Table.Cell>
+                    <Table.Cell><Unit data = { { t, line1: 1, line2: 0, line3: 1, line4: 1, line5: 0, line6: 1 } } /></Table.Cell>
+                    <Table.Cell><Unit data = { { t, line1: 1, line2: 0, line3: 1, line4: 1, line5: 0, line6: 0 } } /></Table.Cell>
+                    <Table.Cell><Unit data = { { t, line1: 1, line2: 0, line3: 1, line4: 0, line5: 1, line6: 1 } } /></Table.Cell>
+                    <Table.Cell><Unit data = { { t, line1: 1, line2: 0, line3: 1, line4: 0, line5: 1, line6: 0 } } /></Table.Cell>
+                    <Table.Cell><Unit data = { { t, line1: 1, line2: 0, line3: 1, line4: 0, line5: 0, line6: 1 } } /></Table.Cell>
+                    <Table.Cell><Unit data = { { t, line1: 1, line2: 0, line3: 1, line4: 0, line5: 0, line6: 0 } } /></Table.Cell>
+                </Table.Row>
+                <Table.Row>
+                    <Table.Cell><Block data = { { t, line1: 1, line2: 0, line3: 0 } } /></Table.Cell>
+                    <Table.Cell><Unit data = { { t, line1: 1, line2: 0, line3: 0, line4: 1, line5: 1, line6: 1 } } /></Table.Cell>
+                    <Table.Cell><Unit data = { { t, line1: 1, line2: 0, line3: 0, line4: 1, line5: 1, line6: 0 } } /></Table.Cell>
+                    <Table.Cell><Unit data = { { t, line1: 1, line2: 0, line3: 0, line4: 1, line5: 0, line6: 1 } } /></Table.Cell>
+                    <Table.Cell><Unit data = { { t, line1: 1, line2: 0, line3: 0, line4: 1, line5: 0, line6: 0 } } /></Table.Cell>
+                    <Table.Cell><Unit data = { { t, line1: 1, line2: 0, line3: 0, line4: 0, line5: 1, line6: 1 } } /></Table.Cell>
+                    <Table.Cell><Unit data = { { t, line1: 1, line2: 0, line3: 0, line4: 0, line5: 1, line6: 0 } } /></Table.Cell>
+                    <Table.Cell><Unit data = { { t, line1: 1, line2: 0, line3: 0, line4: 0, line5: 0, line6: 1 } } /></Table.Cell>
+                    <Table.Cell><Unit data = { { t, line1: 1, line2: 0, line3: 0, line4: 0, line5: 0, line6: 0 } } /></Table.Cell>
+                </Table.Row>
+                <Table.Row>
+                    <Table.Cell><Block data = { { t, line1: 0, line2: 1, line3: 1 } } /></Table.Cell>
+                    <Table.Cell><Unit data = { { t, line1: 0, line2: 1, line3: 1, line4: 1, line5: 1, line6: 1 } } /></Table.Cell>
+                    <Table.Cell><Unit data = { { t, line1: 0, line2: 1, line3: 1, line4: 1, line5: 1, line6: 0 } } /></Table.Cell>
+                    <Table.Cell><Unit data = { { t, line1: 0, line2: 1, line3: 1, line4: 1, line5: 0, line6: 1 } } /></Table.Cell>
+                    <Table.Cell><Unit data = { { t, line1: 0, line2: 1, line3: 1, line4: 1, line5: 0, line6: 0 } } /></Table.Cell>
+                    <Table.Cell><Unit data = { { t, line1: 0, line2: 1, line3: 1, line4: 0, line5: 1, line6: 1 } } /></Table.Cell>
+                    <Table.Cell><Unit data = { { t, line1: 0, line2: 1, line3: 1, line4: 0, line5: 1, line6: 0 } } /></Table.Cell>
+                    <Table.Cell><Unit data = { { t, line1: 0, line2: 1, line3: 1, line4: 0, line5: 0, line6: 1 } } /></Table.Cell>
+                    <Table.Cell><Unit data = { { t, line1: 0, line2: 1, line3: 1, line4: 0, line5: 0, line6: 0 } } /></Table.Cell>
+                </Table.Row>
+                <Table.Row>
+                    <Table.Cell><Block data = { { t, line1: 0, line2: 1, line3: 0 } } /></Table.Cell>
+                    <Table.Cell><Unit data = { { t, line1: 0, line2: 1, line3: 0, line4: 1, line5: 1, line6: 1 } } /></Table.Cell>
+                    <Table.Cell><Unit data = { { t, line1: 0, line2: 1, line3: 0, line4: 1, line5: 1, line6: 0 } } /></Table.Cell>
+                    <Table.Cell><Unit data = { { t, line1: 0, line2: 1, line3: 0, line4: 1, line5: 0, line6: 1 } } /></Table.Cell>
+                    <Table.Cell><Unit data = { { t, line1: 0, line2: 1, line3: 0, line4: 1, line5: 0, line6: 0 } } /></Table.Cell>
+                    <Table.Cell><Unit data = { { t, line1: 0, line2: 1, line3: 0, line4: 0, line5: 1, line6: 1 } } /></Table.Cell>
+                    <Table.Cell><Unit data = { { t, line1: 0, line2: 1, line3: 0, line4: 0, line5: 1, line6: 0 } } /></Table.Cell>
+                    <Table.Cell><Unit data = { { t, line1: 0, line2: 1, line3: 0, line4: 0, line5: 0, line6: 1 } } /></Table.Cell>
+                    <Table.Cell><Unit data = { { t, line1: 0, line2: 1, line3: 0, line4: 0, line5: 0, line6: 0 } } /></Table.Cell>
+                </Table.Row>
+                <Table.Row>
+                    <Table.Cell><Block data = { { t, line1: 0, line2: 0, line3: 1 } } /></Table.Cell>
+                    <Table.Cell><Unit data = { { t, line1: 0, line2: 0, line3: 1, line4: 1, line5: 1, line6: 1 } } /></Table.Cell>
+                    <Table.Cell><Unit data = { { t, line1: 0, line2: 0, line3: 1, line4: 1, line5: 1, line6: 0 } } /></Table.Cell>
+                    <Table.Cell><Unit data = { { t, line1: 0, line2: 0, line3: 1, line4: 1, line5: 0, line6: 1 } } /></Table.Cell>
+                    <Table.Cell><Unit data = { { t, line1: 0, line2: 0, line3: 1, line4: 1, line5: 0, line6: 0 } } /></Table.Cell>
+                    <Table.Cell><Unit data = { { t, line1: 0, line2: 0, line3: 1, line4: 0, line5: 1, line6: 1 } } /></Table.Cell>
+                    <Table.Cell><Unit data = { { t, line1: 0, line2: 0, line3: 1, line4: 0, line5: 1, line6: 0 } } /></Table.Cell>
+                    <Table.Cell><Unit data = { { t, line1: 0, line2: 0, line3: 1, line4: 0, line5: 0, line6: 1 } } /></Table.Cell>
+                    <Table.Cell><Unit data = { { t, line1: 0, line2: 0, line3: 1, line4: 0, line5: 0, line6: 0 } } /></Table.Cell>
+                </Table.Row>
+                <Table.Row>
+                    <Table.Cell><Block data = { { t, line1: 0, line2: 0, line3: 0 } } /></Table.Cell>
+                    <Table.Cell><Unit data = { { t, line1: 0, line2: 0, line3: 0, line4: 1, line5: 1, line6: 1 } } /></Table.Cell>
+                    <Table.Cell><Unit data = { { t, line1: 0, line2: 0, line3: 0, line4: 1, line5: 1, line6: 0 } } /></Table.Cell>
+                    <Table.Cell><Unit data = { { t, line1: 0, line2: 0, line3: 0, line4: 1, line5: 0, line6: 1 } } /></Table.Cell>
+                    <Table.Cell><Unit data = { { t, line1: 0, line2: 0, line3: 0, line4: 1, line5: 0, line6: 0 } } /></Table.Cell>
+                    <Table.Cell><Unit data = { { t, line1: 0, line2: 0, line3: 0, line4: 0, line5: 1, line6: 1 } } /></Table.Cell>
+                    <Table.Cell><Unit data = { { t, line1: 0, line2: 0, line3: 0, line4: 0, line5: 1, line6: 0 } } /></Table.Cell>
+                    <Table.Cell><Unit data = { { t, line1: 0, line2: 0, line3: 0, line4: 0, line5: 0, line6: 1 } } /></Table.Cell>
+                    <Table.Cell><Unit data = { { t, line1: 0, line2: 0, line3: 0, line4: 0, line5: 0, line6: 0 } } /></Table.Cell>
+                </Table.Row>
+                </Table.Body>
+            </Table>
+
             <List items={ items } />
             <Router history={history}>
               <RouteMap routes={data}/>
