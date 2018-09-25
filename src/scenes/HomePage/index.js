@@ -23,6 +23,12 @@ class HomePage extends React.Component {
                 This is the home page
             </Message>
             <Button primary
+              dest='/hexagram'
+              onClick={this.handleItemClick}
+            >
+              {t('App.Masthead.hexagram')}
+            </Button>
+            <Button primary
               dest='/businessservice1'
               onClick={this.handleItemClick}
             >

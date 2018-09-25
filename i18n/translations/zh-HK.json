@@ -12,6 +12,7 @@
   "Greeting user": "你好, {{firstName}} {{lastName}}",
   "App": {
     "Masthead": {
+      "hexagram": "Hexagram",
       "businessService1": "Business Service 1",
       "businessService2": "Business Service 2",
       "login": "登錄",
@@ -27,6 +28,11 @@
     "Europe": "歐洲",
     "Latin America and the Caribbean": "拉丁美洲和加勒比地區",
     "The United States, Canada, and Puerto Rico": "美國，加拿大和波多黎各"
+  },
+  "hexagram": {
+    "page1": "頁 1",
+    "page2": "頁 2",
+    "page3": "頁 3"
   },
   "businessservice1": {
     "page1": "頁 1",

@@ -7,7 +7,7 @@ import { Container } from 'semantic-ui-react';
 
 import { history } from 'helpers';
 import { RouteMap } from 'routers';
-import { CountryPage, HomePage, LoginPage, BusinessService1Page } from 'scenes';
+import { CountryPage, HomePage, LoginPage, HexagramPage, BusinessService1Page } from 'scenes';
 import { Masthead } from './Masthead';
 import { Footer } from './Footer';
 
@@ -22,7 +22,8 @@ class App extends React.Component {
             { to: '/country', comp: CountryPage, privateRoute: false },
             { to: '/login', comp: LoginPage, privateRoute: false },
             { to: '/home', comp: HomePage, privateRoute: true },
-            { to: '/businessService1', comp: BusinessService1Page, privateRoute: true }
+            { to: '/businessservice1', comp: BusinessService1Page, privateRoute: true },
+            { to: '/hexagram', comp: HexagramPage, privateRoute: true }
            ];
         return (
           <Container fluid style={{ display:'flex', minHeight:'100vh', flexDirection:'column' }}>
