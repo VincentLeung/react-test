@@ -4,22 +4,12 @@ import { connect } from 'react-redux';
 import { translate, Trans } from 'react-i18next';
 import { flowRight } from 'lodash';
 import { Button, Container, Header, Item, List, Message, Table } from 'semantic-ui-react';
-import { Block, Unit } from 'components';
+import { Trigram, Hexagram } from 'components';
 
 class Page1 extends React.Component {
     constructor(props) {
         super(props);
-        const gData = [
-            { line1: 1, line2: 1, line3: 1 },
-            { line1: 1, line2: 1, line3: 0 },
-            { line1: 1, line2: 0, line3: 1 },
-            { line1: 1, line2: 0, line3: 0 },
-            { line1: 0, line2: 1, line3: 1 },
-            { line1: 0, line2: 1, line3: 0 },
-            { line1: 0, line2: 0, line3: 1 },
-            { line1: 0, line2: 0, line3: 0 },
-        ];
-        this.state = { gData };
+        this.state = { };
     }
     componentDidMount() {
         // this.props.dispatch(userActions.getAll());
@@ -29,21 +19,21 @@ class Page1 extends React.Component {
         let tableRow = [];
         let children = [];
         children.push(<Table.HeaderCell />);
-        this.state.gData.forEach(function(data){
-            children.push(<Table.HeaderCell><Block data = { { t, ...data, showName: true } } /></Table.HeaderCell>);
-          });
+        for (var gramDec = 7; gramDec >=0; gramDec--) {
+            children.push(<Table.HeaderCell><Trigram data = { { gramDec, t, showName: true } } /></Table.HeaderCell>);
+        }
         tableRow.push(<Table.Row key='-1'>{children}</Table.Row>);
         return tableRow;
     }
 
     createTableRow (t, row) {
-        const rowBase = this.state.gData[row];
+        const rowBase = 63 - 8 * row;
         let tableRow = [];
         let children = [];
-        children.push(<Table.Cell><Block data = { { t, ...rowBase, showName: true } } /></Table.Cell>);
-        this.state.gData.forEach(function(data){
-            children.push(<Table.Cell><Unit data = { { t, ...rowBase, line4: data.line1, line5: data.line2, line6: data.line3, showName: true } } /></Table.Cell>);
-          });
+        children.push(<Table.Cell><Trigram data = { { t, gramDec: 7 - row, showName: true } } /></Table.Cell>);
+        for (var i = 0; i < 8; i++) {
+            children.push(<Table.Cell><Hexagram data = { { gramDec: rowBase - i, t, showName: true } } /></Table.Cell>);
+        }
         tableRow.push(<Table.Row key={row}>{children}</Table.Row>);
         return tableRow;
     }
@@ -51,9 +41,9 @@ class Page1 extends React.Component {
     createTableBody (t) {
         let body = [];
         const that = this;
-        this.state.gData.forEach(function(data, i){
+        for (var i = 0; i < 8; i++) {
             body.push(that.createTableRow(t, i));
-          });
+        }
         return body;
     }
 

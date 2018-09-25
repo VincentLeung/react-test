@@ -6,10 +6,10 @@ const lineHeight = '8';
 const solidLineDim = { height: lineHeight, width: 70, x:'0', y:'0' };
 const dottedLineDim = { height: lineHeight, width: '32', x:'0', x2: '38', y:'0' };
 const textDim = { x: 5, height: 25 };
-const blockDim = { margin: { top: 5, bottom: 5, left: 5, right: 5 } };
-const unitDim = { margin: { top: 5, bottom: 5, left: 5, right: 5 } };
+const trigramDim = { margin: { top: 5, bottom: 5, left: 5, right: 5 } };
+const hexagramDim = { margin: { top: 5, bottom: 5, left: 5, right: 5 } };
 
-export const SymbolDefs = () => (
+const SymbolDefs = () => (
     <Defs>
         <G id='solidLine'>
             <Rect x={ solidLineDim.x } y={ solidLineDim.y } width={ solidLineDim.width } height={ solidLineDim.height } style={ solidLineStyle } />
@@ -21,34 +21,48 @@ export const SymbolDefs = () => (
     </Defs>
 )
 
-export const Block = ({data}) => (
-    <SVG width={ solidLineDim.width + blockDim.margin.left + blockDim.margin.right } height={ lineHeight * 4 + textDim.height + blockDim.margin.top + blockDim.margin.bottom }>
+export const Trigram = ({data}) => {
+    let binStr = decToBinStr(data.gramDec, true);
+    return (
+    <SVG width={ solidLineDim.width + trigramDim.margin.left + trigramDim.margin.right } height={ lineHeight * 4 + textDim.height + trigramDim.margin.top + trigramDim.margin.bottom }>
         <SymbolDefs /> 
-        <Use xlinkHref={lineStyle(data.line3)} x={ blockDim.margin.left } y={ lineHeight * 0 + blockDim.margin.top } />
-        <Use xlinkHref={lineStyle(data.line2)} x={ blockDim.margin.left } y={ lineHeight * 2 + blockDim.margin.top } />
-        <Use xlinkHref={lineStyle(data.line1)} x={ blockDim.margin.left } y={ lineHeight * 4 + blockDim.margin.top } />
+        <Use xlinkHref={lineStyle(binStr, 2)} x={ trigramDim.margin.left } y={ lineHeight * 0 + trigramDim.margin.top } />
+        <Use xlinkHref={lineStyle(binStr, 1)} x={ trigramDim.margin.left } y={ lineHeight * 2 + trigramDim.margin.top } />
+        <Use xlinkHref={lineStyle(binStr, 0)} x={ trigramDim.margin.left } y={ lineHeight * 4 + trigramDim.margin.top } />
         {
             data.showName &&
-            <Text x={ blockDim.margin.left + textDim.x } y={ lineHeight * 4 + textDim.height + blockDim.margin.top } style={ textStyle }>{blockName(data)}</Text>
+            <Text x={ trigramDim.margin.left + textDim.x } y={ lineHeight * 4 + textDim.height + trigramDim.margin.top } style={ textStyle }>{trigramName(data.t, data.gramDec)}</Text>
         }
     </SVG>
-)
+    )
+}
 
-export const Unit = ({data}) => (
-    <SVG width={ solidLineDim.width + unitDim.margin.left + unitDim.margin.right } height={ lineHeight * 10 + textDim.height + unitDim.margin.top + unitDim.margin.bottom }>
+export const Hexagram = ({data}) => {
+    let binStr = decToBinStr(data.gramDec, false);
+    return (
+    <SVG width={ solidLineDim.width + hexagramDim.margin.left + hexagramDim.margin.right } height={ lineHeight * 10 + textDim.height + hexagramDim.margin.top + hexagramDim.margin.bottom }>
         <SymbolDefs /> 
-        <Use xlinkHref={lineStyle(data.line6)} x={ unitDim.margin.left } y={ lineHeight * 0 + unitDim.margin.top } />
-        <Use xlinkHref={lineStyle(data.line5)} x={ unitDim.margin.left } y={ lineHeight * 2 + unitDim.margin.top } />
-        <Use xlinkHref={lineStyle(data.line4)} x={ unitDim.margin.left } y={ lineHeight * 4 + unitDim.margin.top } />
-        <Use xlinkHref={lineStyle(data.line3)} x={ unitDim.margin.left } y={ lineHeight * 6 + unitDim.margin.top } />
-        <Use xlinkHref={lineStyle(data.line2)} x={ unitDim.margin.left } y={ lineHeight * 8 + unitDim.margin.top } />
-        <Use xlinkHref={lineStyle(data.line1)} x={ unitDim.margin.left } y={ lineHeight * 10 + unitDim.margin.top } />
+        <Use xlinkHref={lineStyle(binStr, 5)} x={ hexagramDim.margin.left } y={ lineHeight * 0 + hexagramDim.margin.top } />
+        <Use xlinkHref={lineStyle(binStr, 4)} x={ hexagramDim.margin.left } y={ lineHeight * 2 + hexagramDim.margin.top } />
+        <Use xlinkHref={lineStyle(binStr, 3)} x={ hexagramDim.margin.left } y={ lineHeight * 4 + hexagramDim.margin.top } />
+        <Use xlinkHref={lineStyle(binStr, 2)} x={ hexagramDim.margin.left } y={ lineHeight * 6 + hexagramDim.margin.top } />
+        <Use xlinkHref={lineStyle(binStr, 1)} x={ hexagramDim.margin.left } y={ lineHeight * 8 + hexagramDim.margin.top } />
+        <Use xlinkHref={lineStyle(binStr, 0)} x={ hexagramDim.margin.left } y={ lineHeight * 10 + hexagramDim.margin.top } />
         {
             data.showName &&
-            <Text x={ unitDim.margin.left + textDim.x } y={ lineHeight * 10 + textDim.height + unitDim.margin.top } style={ textStyle }>{unitName(data)}</Text>
+            <Text x={ hexagramDim.margin.left + textDim.x } y={ lineHeight * 10 + textDim.height + hexagramDim.margin.top } style={ textStyle }>{hexagramName(data.t, data.gramDec)}</Text>
         }
     </SVG>
-)
+    )
+}
+
+export const trigramName = (t, gramDec) => {
+    return t('trigramName.' + gramDec);
+}
+
+export const hexagramName = (t, gramDec) => {
+    return t('hexagramName.' + gramDec);
+}
 
 const solidLineStyle = {
     stroke: '#006600',
@@ -63,26 +77,14 @@ const dottedLineStyle = {
 const textStyle = {
 }
 
-const lineStyle = ( data ) => (
-    data ? '#solidLine' : '#dottedLine'
+const lineStyle = ( binStr, index ) => (
+    +binStr.charAt(index) ? '#solidLine' : '#dottedLine'
 )
 
-const blockName = (data) => {
-    var name = 'octagon.b';
-    name += data.line1 ? '1' : '0';
-    name += data.line2 ? '1' : '0';
-    name += data.line3 ? '1' : '0';
-    return data.t(name);
+const decToBinStr = (dec, isTrigram) => {
+    let bin = dec.toString(2);
+    return isTrigram ? ('000'+bin).slice(-3) : ('000000'+bin).slice(-6);
 }
-
-const unitName = (data) => {
-    var name = 'octagon.u';
-    name += data.line1 ? '1' : '0';
-    name += data.line2 ? '1' : '0';
-    name += data.line3 ? '1' : '0';
-    name += data.line4 ? '1' : '0';
-    name += data.line5 ? '1' : '0';
-    name += data.line6 ? '1' : '0';
-    return data.t(name);
+const binStrToDec = (bin) => {
+    return parseInt(+bin, 2);
 }
-
