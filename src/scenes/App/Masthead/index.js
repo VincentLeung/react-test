@@ -47,7 +47,7 @@ class Masthead extends React.Component {
     }
 
     render() {
-      const { t, i18n, loggedIn, currentUser, alert } = this.props;
+      const { t, i18n, loggedIn, user, alert } = this.props;
       const { activeItem } = this.state;
       return (
         <Container fluid>
@@ -72,9 +72,9 @@ class Masthead extends React.Component {
               >
                 <CountryLanguage flag={i18n.flag} language={i18n.lngKey} />
               </Menu.Item>
-            {loggedIn && currentUser && currentUser.parsedCredentialDto &&
+            {loggedIn &&
               <Menu.Menu position='right'>
-                <Dropdown item text={currentUser.parsedCredentialDto.username}>
+                <Dropdown item text={user.username}>
                   <Dropdown.Menu>
                     <Dropdown.Item onClick={this.logout}>{t('App.Masthead.logout')}</Dropdown.Item>
                   </Dropdown.Menu>
@@ -118,17 +118,16 @@ Masthead.propTypes = {
   }),
   t: PropTypes.func.isRequired,
   i18n: PropTypes.object,
-  loggedIn: PropTypes.bool,
-  currentUser: PropTypes.object
+  loggedIn: PropTypes.bool
 };
 
 function mapStateToProps(state) {
   const { authentication, alert  } = state.data;
-  const { loggedIn, currentUser } = authentication;
+  const { loggedIn, user } = authentication;
   return {
       alert,
       loggedIn,
-      currentUser
+      user
   };
 }
 
