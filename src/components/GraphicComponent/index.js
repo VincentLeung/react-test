@@ -27,7 +27,10 @@ export const Block = ({data}) => (
         <Use xlinkHref={lineStyle(data.line3)} x={ blockDim.margin.left } y={ lineHeight * 0 + blockDim.margin.top } />
         <Use xlinkHref={lineStyle(data.line2)} x={ blockDim.margin.left } y={ lineHeight * 2 + blockDim.margin.top } />
         <Use xlinkHref={lineStyle(data.line1)} x={ blockDim.margin.left } y={ lineHeight * 4 + blockDim.margin.top } />
-        <Text x={ blockDim.margin.left + textDim.x } y={ lineHeight * 4 + textDim.height + blockDim.margin.top } style={ textStyle }>{blockName(data)}</Text>
+        {
+            data.showName &&
+            <Text x={ blockDim.margin.left + textDim.x } y={ lineHeight * 4 + textDim.height + blockDim.margin.top } style={ textStyle }>{blockName(data)}</Text>
+        }
     </SVG>
 )
 
@@ -40,7 +43,10 @@ export const Unit = ({data}) => (
         <Use xlinkHref={lineStyle(data.line3)} x={ unitDim.margin.left } y={ lineHeight * 6 + unitDim.margin.top } />
         <Use xlinkHref={lineStyle(data.line2)} x={ unitDim.margin.left } y={ lineHeight * 8 + unitDim.margin.top } />
         <Use xlinkHref={lineStyle(data.line1)} x={ unitDim.margin.left } y={ lineHeight * 10 + unitDim.margin.top } />
-        <Text x={ unitDim.margin.left + textDim.x } y={ lineHeight * 10 + textDim.height + unitDim.margin.top } style={ textStyle }>{unitName(data)}</Text>
+        {
+            data.showName &&
+            <Text x={ unitDim.margin.left + textDim.x } y={ lineHeight * 10 + textDim.height + unitDim.margin.top } style={ textStyle }>{unitName(data)}</Text>
+        }
     </SVG>
 )
 

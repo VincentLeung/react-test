@@ -30,7 +30,7 @@ class HexagramPage extends React.Component {
         return (
           <Container>
             <Message color='green'>
-                This is the hexagram page
+            {t('hexagram.mainPage')}
             </Message>
 
             <List items={ items } />

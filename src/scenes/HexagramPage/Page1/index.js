@@ -30,7 +30,7 @@ class Page1 extends React.Component {
         let children = [];
         children.push(<Table.HeaderCell />);
         this.state.gData.forEach(function(data){
-            children.push(<Table.HeaderCell><Block data = { { t, ...data } } /></Table.HeaderCell>);
+            children.push(<Table.HeaderCell><Block data = { { t, ...data, showName: true } } /></Table.HeaderCell>);
           });
         tableRow.push(<Table.Row key='-1'>{children}</Table.Row>);
         return tableRow;
@@ -40,9 +40,9 @@ class Page1 extends React.Component {
         const rowBase = this.state.gData[row];
         let tableRow = [];
         let children = [];
-        children.push(<Table.Cell><Block data = { { t, ...rowBase } } /></Table.Cell>);
+        children.push(<Table.Cell><Block data = { { t, ...rowBase, showName: true } } /></Table.Cell>);
         this.state.gData.forEach(function(data){
-            children.push(<Table.Cell><Unit data = { { t, ...rowBase, line4: data.line1, line5: data.line2, line6: data.line3 } } /></Table.Cell>);
+            children.push(<Table.Cell><Unit data = { { t, ...rowBase, line4: data.line1, line5: data.line2, line6: data.line3, showName: true } } /></Table.Cell>);
           });
         tableRow.push(<Table.Row key={row}>{children}</Table.Row>);
         return tableRow;
@@ -62,7 +62,7 @@ class Page1 extends React.Component {
         return (
           <Container>
             <Message color='olive'>
-                This is the page 1
+                {t('hexagram.page1')}
             </Message>
 
             <Table definition>
