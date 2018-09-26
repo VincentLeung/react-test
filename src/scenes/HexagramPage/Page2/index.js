@@ -106,11 +106,11 @@ class Page2 extends React.Component {
             </Message>
             <div>
                 <Segment textAlign='left'>
-                    <Label as='a' color='red'>
+                    <Label as='a' color='red' size='big'>
                         {t('hexagram.quiz.incorrect')}
                         <Label.Detail>{this.state.incorrect}</Label.Detail>
                     </Label>
-                    <Label as='a' color='green'>
+                    <Label as='a' color='green' size='big'>
                         {t('hexagram.quiz.correct')}
                         <Label.Detail>{this.state.correct}</Label.Detail>
                     </Label>
