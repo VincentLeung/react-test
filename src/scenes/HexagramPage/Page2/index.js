@@ -3,33 +3,47 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { translate, Trans } from 'react-i18next';
 import { flowRight } from 'lodash';
-import { Button, Container, Header, Item, List, Message, Step } from 'semantic-ui-react';
+import { Button, Container, Header, Icon, Label, Message, Segment, ButtonGroup } from 'semantic-ui-react';
 import { Trigram, Hexagram, trigramName, hexagramName } from 'components';
 
 class Page2 extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { choiceCount: 5 };
+        this.state = { choiceCount:5, correct:0, incorrect:0 };
+        this.state.question = this.getNextQuestion();
+    }
+
+    getNextQuestion() {
+        let question = this.getRandomQuestion();
+        while (question == this.state.question) {
+            question = this.getRandomQuestion();
+        }
+        question.choices = this.getChoices(question);
+        return question;
     }
 
     getRandomInt(max) {
         return Math.floor(Math.random() * Math.floor(max));
     }
+
+    shuffle(a) {
+        for (let i = a.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [a[i], a[j]] = [a[j], a[i]];
+        }
+        return a;
+    }
+
     getRandomQuestion() {
         let isTrigram = this.getRandomInt(2);
         let gramDec = isTrigram ? this.getRandomInt(8) : this.getRandomInt(64);
-        this.state.question = { gramDec, isTrigram };
-    }
-    generateQuestion() {
-        this.getRandomQuestion();
-        let gramDec = this.state.question.gramDec;
-        return this.state.question.isTrigram ? <Trigram data={ {gramDec} } /> : <Hexagram data={ {gramDec} } />;
+        return { gramDec, isTrigram };
     }
 
-    getChoices() {
+    getChoices(question) {
         let choices = [];
-        choices.push(this.state.question.gramDec);
-        let max = this.state.question.isTrigram ? 8 : 64;
+        choices.push(question.gramDec);
+        let max = question.isTrigram ? 8 : 64;
         while (choices.length < this.state.choiceCount) {
             let choice = this.getRandomInt(max);
             var duplicated = false;
@@ -42,27 +56,45 @@ class Page2 extends React.Component {
                 choices.push(choice);
             }
         }
-        return choices;
+        return this.shuffle(choices);
     }
 
-    shuffle(a) {
-        for (let i = a.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
-            [a[i], a[j]] = [a[j], a[i]];
+    handleNextClick(answer){
+        this.setState({ answered: false });
+        this.setState({ question: this.getNextQuestion() });
+    }
+
+    handleAnswerClick(answer){
+        if (!this.state.answered) {
+            this.setState({ answered: true });
+            if (answer == this.state.question.gramDec) {
+                this.setState({correct: this.state.correct + 1})
+            } else {
+              this.setState({incorrect: this.state.incorrect + 1})
+            }
         }
-        return a;
+    }
+
+    generateQuestion() {
+        let gramDec = this.state.question.gramDec;
+        return this.state.question.isTrigram ? <Trigram data={ {gramDec} } /> : <Hexagram data={ {gramDec} } />;
     }
 
     generateChoices(t) {
         let ret = [];
-        let choices = this.getChoices();
-        choices = this.shuffle(choices);
+        let choices = this.state.question.choices;
         for (var i = 0; i < choices.length; i++) {
             let gramDec = choices[i];
             let choiceText = this.state.question.isTrigram ? trigramName(t, gramDec) : hexagramName(t, gramDec);
-            ret.push(<Button>{choiceText}</Button>);
+            if (i) ret.push(<Button.Or text={t('hexagram.quiz.or')} />);
+            ret.push(
+                <Button onClick={()=>this.handleAnswerClick(gramDec)}>
+                { this.state.answered && gramDec == this.state.question.gramDec && <Icon name='check' /> }
+                { choiceText}
+                </Button>
+            );
         }
-        return ret;
+        return <ButtonGroup>{ret}</ButtonGroup>;
     }
 
     render() {
@@ -72,12 +104,23 @@ class Page2 extends React.Component {
             <Message color='olive'>
             {t('hexagram.page2')}
             </Message>
-            <Container>
-                { this.generateQuestion()}
-            </Container>
-            <Container>
-                { this.generateChoices(t) }
-            </Container>
+            <div>
+                <Segment textAlign='left'>
+                    <Label as='a' color='red'>
+                        {t('hexagram.quiz.incorrect')}
+                        <Label.Detail>{this.state.incorrect}</Label.Detail>
+                    </Label>
+                    <Label as='a' color='green'>
+                        {t('hexagram.quiz.correct')}
+                        <Label.Detail>{this.state.correct}</Label.Detail>
+                    </Label>
+                    <Container textAlign='center'>{ this.generateQuestion() }</Container>
+                    <Segment textAlign='center'>{ this.generateChoices(t) }</Segment>
+                    <Container textAlign='right'>
+                    { this.state.answered && <Button primary onClick={()=>this.handleNextClick()} >{t('hexagram.quiz.next')}</Button> }
+                    </Container>
+                </Segment>
+            </div>
           </Container>
         );
     }

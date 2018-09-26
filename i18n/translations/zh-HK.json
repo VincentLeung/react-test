@@ -33,7 +33,13 @@
     "mainPage": "六十四卦",
     "page1": "六十四卦方圖",
     "page2": "六十四卦練習",
-    "page3": "頁 3"
+    "page3": "頁 3",
+    "quiz": {
+      "correct": "答對",
+      "incorrect": "答錯",
+      "or": "或",
+      "next": "下一題"
+    }
   },
   "businessservice1": {
     "page1": "頁 1",
