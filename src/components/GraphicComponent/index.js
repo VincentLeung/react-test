@@ -31,7 +31,7 @@ export const Trigram = ({data}) => {
         <Use xlinkHref={lineStyle(binStr, 0)} x={ trigramDim.margin.left } y={ lineHeight * 4 + trigramDim.margin.top } />
         {
             data.showName &&
-            <Text x={ trigramDim.margin.left + textDim.x } y={ lineHeight * 4 + textDim.height + trigramDim.margin.top } style={ textStyle }>{trigramName(data.t, data.gramDec)}</Text>
+            <Text x={ trigramDim.margin.left + textDim.x } y={ lineHeight * 4 + textDim.height + trigramDim.margin.top } style={ textStyle }>{trigramName(data.t, data.gramDec, data.nameType)}</Text>
         }
     </SVG>
     )
@@ -50,18 +50,20 @@ export const Hexagram = ({data}) => {
         <Use xlinkHref={lineStyle(binStr, 0)} x={ hexagramDim.margin.left } y={ lineHeight * 10 + hexagramDim.margin.top } />
         {
             data.showName &&
-            <Text x={ hexagramDim.margin.left + textDim.x } y={ lineHeight * 10 + textDim.height + hexagramDim.margin.top } style={ textStyle }>{hexagramName(data.t, data.gramDec)}</Text>
+            <Text x={ hexagramDim.margin.left + textDim.x } y={ lineHeight * 10 + textDim.height + hexagramDim.margin.top } style={ textStyle }>{hexagramName(data.t, data.gramDec, data.nameType)}</Text>
         }
     </SVG>
     )
 }
 
-export const trigramName = (t, gramDec) => {
-    return t('trigramName.' + gramDec);
+export const trigramName = (t, gramDec, nameType) => {
+    let prefix = nameType ? nameType : 'trigramName';
+    return t(prefix + '.' + gramDec);
 }
 
-export const hexagramName = (t, gramDec) => {
-    return t('hexagramName.' + gramDec);
+export const hexagramName = (t, gramDec, nameType) => {
+    let prefix = nameType ? nameType : 'hexagramName';
+    return t(prefix + '.' + gramDec);
 }
 
 const solidLineStyle = {
