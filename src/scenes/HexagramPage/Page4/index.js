@@ -5,6 +5,7 @@ import { translate, Trans } from 'react-i18next';
 import { flowRight } from 'lodash';
 import { Button, Container, Header, Icon, Label, Message, Segment, ButtonGroup } from 'semantic-ui-react';
 import { Trigram, Hexagram, trigramName, hexagramName } from 'components';
+import { shuffle, getRandomInt } from 'helpers';
 
 class Page4 extends React.Component {
     constructor(props) {
@@ -33,21 +34,9 @@ class Page4 extends React.Component {
         return question;
     }
 
-    getRandomInt(max) {
-        return Math.floor(Math.random() * Math.floor(max));
-    }
-
-    shuffle(a) {
-        for (let i = a.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
-            [a[i], a[j]] = [a[j], a[i]];
-        }
-        return a;
-    }
-
     getRandomQuestion() {
-        let base = this.getRandomInt(this.state.questions.bases.length);
-        let variant = this.getRandomInt(this.state.questions.variants.length);
+        let base = getRandomInt(this.state.questions.bases.length);
+        let variant = getRandomInt(this.state.questions.variants.length);
         let answer = this.getAnswer(base, variant);
         return { base, variant, answer };
     }
@@ -57,7 +46,7 @@ class Page4 extends React.Component {
         choices.push(question.answer);
         let max = 64;
         while (choices.length < this.state.choiceCount) {
-            let choice = this.getRandomInt(max);
+            let choice = getRandomInt(max);
             var duplicated = false;
             for (var i = 0; i < choices.length; i++) {
                 if (choices[i] == choice) {
@@ -68,7 +57,7 @@ class Page4 extends React.Component {
                 choices.push(choice);
             }
         }
-        return this.shuffle(choices);
+        return shuffle(choices);
     }
 
     handleNextClick(answer){

@@ -25,3 +25,7 @@ export function configureStore() {
   initSagas(sagaMiddleware);
   return store;
 }
+
+export function getRandomInt(max) {
+  return Math.floor(Math.random() * Math.floor(max));
+}
