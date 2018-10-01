@@ -10,6 +10,17 @@ class Page1 extends React.Component {
     constructor(props) {
         super(props);
         this.state = { };
+        this.state.bgColorMap = [
+            [3, 3, 3, 3, 3, 3, 3, 3],
+            [3, 2, 2, 2, 2, 2, 2, 3],
+            [3, 2, 1, 1, 1, 1, 2, 3],
+            [3, 2, 1, 0, 0, 1, 2, 3],
+            [3, 2, 1, 0, 0, 1, 2, 3],
+            [3, 2, 1, 1, 1, 1, 2, 3],
+            [3, 2, 2, 2, 2, 2, 2, 3],
+            [3, 3, 3, 3, 3, 3, 3, 3]
+        ];
+        this.state.colorNames = [ 'white', 'yellow', 'teal' , 'olive' ];
     }
     componentDidMount() {
         // this.props.dispatch(userActions.getAll());
@@ -32,7 +43,7 @@ class Page1 extends React.Component {
         let children = [];
         children.push(<Table.Cell><Trigram data = { { t, gramDec: 7 - row, showName: true } } /></Table.Cell>);
         for (var i = 0; i < 8; i++) {
-            children.push(<Table.Cell><Hexagram data = { { gramDec: rowBase - i, t, showName: true } } /></Table.Cell>);
+            children.push(<Table.Cell style={{'background-color': this.state.colorNames[this.state.bgColorMap[row][i]]}}><Hexagram data = { { gramDec: rowBase - i, t, showName: true } } /></Table.Cell>);
         }
         tableRow.push(<Table.Row key={row}>{children}</Table.Row>);
         return tableRow;
