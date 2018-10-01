@@ -20,7 +20,7 @@ class Page1 extends React.Component {
             [3, 2, 2, 2, 2, 2, 2, 3],
             [3, 3, 3, 3, 3, 3, 3, 3]
         ];
-        this.state.colorNames = [ 'white', 'yellow', 'teal' , 'olive' ];
+        this.state.colorNames = [ 'olive', 'yellow', 'teal' , 'green' ];
     }
     componentDidMount() {
         // this.props.dispatch(userActions.getAll());
