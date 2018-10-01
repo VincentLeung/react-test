@@ -33,7 +33,8 @@
     "mainPage": "Hexagram",
     "page1": "Hexagram Lookup Table",
     "page2": "Hexagram Quiz",
-    "page3": "Page 3",
+    "page3": "Hexagram Variation",
+    "page4": "Hexagram Variation Quiz",
     "quiz": {
       "correct": "Correct",
       "incorrect": "Incorrect",
