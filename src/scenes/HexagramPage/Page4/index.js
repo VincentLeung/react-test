@@ -1,10 +1,9 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { translate, Trans } from 'react-i18next';
+import { translate } from 'react-i18next';
 import { flowRight } from 'lodash';
-import { Button, Container, Header, Icon, Label, Message, Segment, ButtonGroup } from 'semantic-ui-react';
-import { Trigram, Hexagram, trigramName, hexagramName } from 'components';
+import { Button, Container, Icon, Label, Message, Segment, ButtonGroup } from 'semantic-ui-react';
+import { Trigram, Hexagram, hexagramName } from 'components';
 import { shuffle, getRandomInt } from 'helpers';
 
 class Page4 extends React.Component {
@@ -69,9 +68,11 @@ class Page4 extends React.Component {
         if (!this.state.answered) {
             this.setState({ answered: true });
             if (answer == this.state.question.answer) {
-                this.setState({correct: this.state.correct + 1})
+                this.setState({correct: this.state.correct + 1});
+                this.setState({corrected: true});
             } else {
-              this.setState({incorrect: this.state.incorrect + 1})
+              this.setState({incorrect: this.state.incorrect + 1});
+              this.setState({corrected: false});
             }
         }
     }
@@ -122,7 +123,10 @@ class Page4 extends React.Component {
                         <Label.Detail>{this.state.correct}</Label.Detail>
                     </Label>
                     <Container textAlign='center'>{ this.generateQuestion(t) }</Container>
-                    <Segment textAlign='center'>{ this.generateChoices(t) }</Segment>
+                    <Segment textAlign='center'>{ this.generateChoices(t) }
+                        { this.state.answered && this.state.corrected && <Label color='green'><Icon name='thumbs up' /></Label> }
+                        { this.state.answered && !this.state.corrected && <Label color='red'><Icon name='thumbs down' /></Label> }
+                    </Segment>
                     <Container textAlign='right'>
                     { this.state.answered && <Button primary onClick={()=>this.handleNextClick()} >{t('hexagram.quiz.next')}</Button> }
                     </Container>
