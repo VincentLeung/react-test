@@ -105,6 +105,12 @@ class Page4 extends React.Component {
         return <ButtonGroup>{ret}</ButtonGroup>;
     }
 
+    generateAnswerResult() {
+        return this.state.corrected
+        ? <Label color='green'><Icon name='thumbs up' /></Label>
+        : <Label color='red'><Icon name='thumbs down' /></Label>
+    }
+
     render() {
         const { t, i18n, user } = this.props;
         return (
@@ -124,8 +130,7 @@ class Page4 extends React.Component {
                     </Label>
                     <Container textAlign='center'>{ this.generateQuestion(t) }</Container>
                     <Segment textAlign='center'>{ this.generateChoices(t) }
-                        { this.state.answered && this.state.corrected && <Label color='green'><Icon name='thumbs up' /></Label> }
-                        { this.state.answered && !this.state.corrected && <Label color='red'><Icon name='thumbs down' /></Label> }
+                        { this.state.answered && this.generateAnswerResult() }
                     </Segment>
                     <Container textAlign='right'>
                     { this.state.answered && <Button primary onClick={()=>this.handleNextClick()} >{t('hexagram.quiz.next')}</Button> }
