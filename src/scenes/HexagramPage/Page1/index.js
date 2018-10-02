@@ -1,15 +1,14 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { translate, Trans } from 'react-i18next';
 import { flowRight } from 'lodash';
-import { Button, Container, Header, Item, List, Message, Table } from 'semantic-ui-react';
+import { Checkbox, Container, Message, Table } from 'semantic-ui-react';
 import { Trigram, Hexagram } from 'components';
 
 class Page1 extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { };
+        this.state = { show4LayersBg: false };
         this.state.bgColorMap = [
             [3, 3, 3, 3, 3, 3, 3, 3],
             [3, 2, 2, 2, 2, 2, 2, 3],
@@ -43,7 +42,10 @@ class Page1 extends React.Component {
         let children = [];
         children.push(<Table.Cell><Trigram data = { { t, gramDec: 7 - row, showName: true } } /></Table.Cell>);
         for (var i = 0; i < 8; i++) {
-            children.push(<Table.Cell style={{'background-color': this.state.colorNames[this.state.bgColorMap[row][i]]}}><Hexagram data = { { gramDec: rowBase - i, t, showName: true } } /></Table.Cell>);
+            let style = (this.state.show4LayersBg) ?
+                {'background-color': this.state.colorNames[this.state.bgColorMap[row][i]]}
+                : {};
+            children.push(<Table.Cell style={style}><Hexagram data = { { gramDec: rowBase - i, t, showName: true } } /></Table.Cell>);
         }
         tableRow.push(<Table.Row key={row}>{children}</Table.Row>);
         return tableRow;
@@ -58,6 +60,10 @@ class Page1 extends React.Component {
         return body;
     }
 
+    toggle4LayerBg() {
+        this.setState({ show4LayersBg: !this.state.show4LayersBg });
+    }
+
     render() {
         const { t, i18n, user } = this.props;
         return (
@@ -65,6 +71,8 @@ class Page1 extends React.Component {
             <Message color='olive'>
                 {t('hexagram.page1')}
             </Message>
+
+            <Checkbox label={t('hexagram.Show 4 color layers')} onChange={()=>this.toggle4LayerBg()} />
 
             <Table definition>
                 <Table.Header>{ this.createTableHeader(t) }</Table.Header>
