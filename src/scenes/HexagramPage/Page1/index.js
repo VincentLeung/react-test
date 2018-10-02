@@ -9,6 +9,10 @@ class Page1 extends React.Component {
     constructor(props) {
         super(props);
         this.state = { show4LayersBg: false };
+        this.state.selectedCell = { row: -1, col: -1 };
+        this.state.oppositeCell = { row: -1, col: -1 };
+        this.state.selectedCellBgColor = 'orange';
+        this.state.oppositeCellBgColor = 'orange';
         this.state.bgColorMap = [
             [3, 3, 3, 3, 3, 3, 3, 3],
             [3, 2, 2, 2, 2, 2, 2, 3],
@@ -41,11 +45,17 @@ class Page1 extends React.Component {
         let tableRow = [];
         let children = [];
         children.push(<Table.Cell><Trigram data = { { t, gramDec: 7 - row, showName: true } } /></Table.Cell>);
-        for (var i = 0; i < 8; i++) {
+        for (let i = 0; i < 8; i++) {
             let style = (this.state.show4LayersBg) ?
                 {'background-color': this.state.colorNames[this.state.bgColorMap[row][i]]}
                 : {};
-            children.push(<Table.Cell style={style}><Hexagram data = { { gramDec: rowBase - i, t, showName: true } } /></Table.Cell>);
+            if (row == this.state.selectedCell.row && i == this.state.selectedCell.col) {
+                style = {'background-color': this.state.selectedCellBgColor};
+            }
+            if (row == this.state.oppositeCell.row && i == this.state.oppositeCell.col) {
+                style = {'background-color': this.state.oppositeCellBgColor};
+            }
+            children.push(<Table.Cell style={style} onClick={()=>this.handleCellClick(row, i)}><Hexagram data = { { gramDec: rowBase - i, t, showName: true } } /></Table.Cell>);
         }
         tableRow.push(<Table.Row key={row}>{children}</Table.Row>);
         return tableRow;
@@ -58,6 +68,16 @@ class Page1 extends React.Component {
             body.push(that.createTableRow(t, i));
         }
         return body;
+    }
+
+    handleCellClick(row, col) {
+        if ((row == this.state.selectedCell.row && col == this.state.selectedCell.col) || (row == this.state.oppositeCell.row && col == this.state.oppositeCell.col)) {
+            this.setState({ selectedCell: { row: -1, col: -1} });
+            this.setState({ oppositeCell: { row: -1, col: -1} });
+        } else {
+            this.setState({ selectedCell: { row: row, col: col} });
+            this.setState({ oppositeCell: { row: 7 - row, col: 7 - col} });
+        }
     }
 
     toggle4LayerBg() {
