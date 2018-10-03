@@ -13,6 +13,7 @@ import { Page1 } from './Page1';
 import { Page2 } from './Page2';
 import { Page3 } from './Page3';
 import { Page4 } from './Page4';
+import { Page5 } from './Page5';
 
 class HexagramPage extends React.Component {
     
@@ -21,6 +22,7 @@ class HexagramPage extends React.Component {
         const data = [
           { name: "hexagram.page1", to: '/hexagram/page1', comp: Page1, privateRoute: true },
           { name: "hexagram.page2", to: '/hexagram/page2', comp: Page2, privateRoute: true },
+          { name: "hexagram.page5", to: '/hexagram/page5', comp: Page5, privateRoute: true },
           { name: "hexagram.page3", to: '/hexagram/page3', comp: Page3, privateRoute: true },
           { name: "hexagram.page4", to: '/hexagram/page4', comp: Page4, privateRoute: true }
          ];
